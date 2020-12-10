@@ -26,6 +26,10 @@ public class LayoutConstants {
 	public static final Color[] courseColours = { Color.BLUE, Color.RED,
 			Color.YELLOW, Color.GREEN, Color.BLACK, Color.CYAN, Color.MAGENTA,
 			Color.ORANGE, Color.PINK };
+
+	public static final Color[] subjectColors = { Color.BLUE, Color.RED,
+			Color.YELLOW, Color.GREEN, Color.BLACK, Color.CYAN, Color.MAGENTA,
+			Color.ORANGE, Color.PINK };
 	
 	public static void paintBarChartOutline(Graphics g, int noOfBars) {
 		g.setColor(Color.black);

@@ -150,6 +150,24 @@ public class CourseViewer extends JFrame implements ActionListener,
 							* LayoutConstants.barWidth, LayoutConstants.yOffset
 							+ LayoutConstants.graphHeight + 20);
 		}
+		int radius = 100;
+
+		//first compute the total number of students
+		double total = 0.0;
+		for (int i = 0; i < sliders.size(); i++) {
+			total += sliders.get(i).getValue();
+		}
+		//if total == 0 nothing to draw
+		if (total != 0) {
+			double startAngle = 0.0;
+			for (int i = 0; i < sliders.size(); i++) {
+				double ratio = (sliders.get(i).getValue()/ total) * 360.0;
+				//draw the arc
+				g.setColor(LayoutConstants.subjectColors[i%LayoutConstants.subjectColors.length]);
+				g.fillArc(LayoutConstants.xOffset, LayoutConstants.yOffset + 300, 2 * radius, 2 * radius, (int) startAngle, (int) ratio);
+				startAngle += ratio;
+			}
+		}
 	}
 
 	/**
@@ -184,7 +202,7 @@ public class CourseViewer extends JFrame implements ActionListener,
 	 */
 	public static void main(String[] args) {
 		CourseViewer viewer = new CourseViewer();
-		viewer.addCourse(new CourseRecord("Physics", 50));
+		viewer.addCourse(new CourseRecord("Physics", 75));
 		viewer.addCourse(new CourseRecord("Chemistry", 50));
 		viewer.addCourse(new CourseRecord("Biology", 50));
 	}

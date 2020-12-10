@@ -61,6 +61,24 @@ public class BarChartObserver extends JPanel implements Observer {
 							* LayoutConstants.barWidth, LayoutConstants.yOffset
 							+ LayoutConstants.graphHeight + 20);
 		}
+		int radius = 100;
+
+		//first compute the total number of students
+		double total = 0.0;
+		for (int i = 0; i < courseData.size(); i++) {
+			total += courseData.get(i).getNumOfStudents();
+		}
+		//if total == 0 nothing to draw
+		if (total != 0) {
+			double startAngle = 0.0;
+			for (int i = 0; i < courseData.size(); i++) {
+				double ratio = (courseData.get(i).getNumOfStudents()/ total) * 360.0;
+				//draw the arc
+				g.setColor(LayoutConstants.subjectColors[i%LayoutConstants.subjectColors.length]);
+				g.fillArc(LayoutConstants.xOffset + 300, LayoutConstants.yOffset, 2 * radius, 2 * radius, (int) startAngle, (int) ratio);
+				startAngle += ratio;
+			}
+		}
 	}
 
 	/**
