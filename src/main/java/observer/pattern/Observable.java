@@ -1,5 +1,8 @@
 package observer.pattern;
 
+import observer.CourseRecord;
+
+import java.awt.*;
 import java.util.Vector;
 
 /**
@@ -46,6 +49,12 @@ public abstract class Observable {
 		}
 	}
 
+	public void notifyObservers(Object param) {
+		for (int i = 0; i < observers.size(); i++) {
+			Observer observer = observers.elementAt(i);
+			observer.update(param);
+		}
+	}
 	/**
 	 * Pull updated data from this Subject
 	 * 

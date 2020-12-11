@@ -107,7 +107,7 @@ public class CourseViewer extends JFrame implements ActionListener,
 			JSlider slider = new JSlider();
 			slider.setBackground(Color.white);
 			slider.setName(courseRecord.getName());
-			slider.setValue(50);
+			slider.setValue(courseRecord.getNumOfStudents());
 			slider.setMinimum(0);
 			slider.setMaximum(100);
 			slider.setMajorTickSpacing(25);
